@@ -1,14 +1,11 @@
 const router = require('express').Router(),
+  { sendCancellationEmail } = require('../../emails/index'),
   cloudinary = require('cloudinary').v2;
 
-// ***********************************************//
 // Get current user
-// ***********************************************//
 router.get('/api/users/me', async (req, res) => res.json(req.user));
 
-// ***********************************************//
 // Update a user
-// ***********************************************//
 router.patch('/api/users/me', async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
@@ -31,9 +28,7 @@ router.patch('/api/users/me', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
-// ***********************************************//
 // Logout a user
-// ***********************************************//
 router.post('/api/users/logout', async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
@@ -47,9 +42,7 @@ router.post('/api/users/logout', async (req, res) => {
   }
 });
 
-// ***********************************************//
 // Logout all devices
-// ***********************************************//
 router.post('/api/users/logoutAll', async (req, res) => {
   try {
     req.user.tokens = [];
@@ -61,12 +54,11 @@ router.post('/api/users/logoutAll', async (req, res) => {
   }
 });
 
-// ***********************************************//
 // Delete a user
-// ***********************************************//
 router.delete('/api/users/me', async (req, res) => {
   try {
     await req.user.remove();
+    sendCancellationEmail(req.user.email, req.user.name);
     res.clearCookie('jwt');
     res.json({ message: 'user deleted' });
   } catch (e) {
@@ -74,9 +66,7 @@ router.delete('/api/users/me', async (req, res) => {
   }
 });
 
-// ***********************************************//
 // Upload avatar
-// ***********************************************//
 router.post('/api/users/avatar', async (req, res) => {
   try {
     const response = await cloudinary.uploader.upload(
@@ -86,6 +76,17 @@ router.post('/api/users/avatar', async (req, res) => {
     await req.user.save();
     res.json(response);
   } catch (error) {
+    res.json({ error: e.toString() });
+  }
+});
+// Update password
+router.put('/api/password', async (req, res) => {
+  try {
+    req.user.password = req.body.password;
+    await req.user.save();
+    res.clearCookie('jwt');
+    res.json({ message: 'password updated successfully' });
+  } catch (e) {
     res.json({ error: e.toString() });
   }
 });

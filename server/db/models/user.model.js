@@ -55,8 +55,21 @@ const userSchema = new mongoose.Schema(
     ],
     avatar: {
       type: String
-    }
+    },
+    preferences: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Categories'
+      }
+    ],
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Podcast'
+      }
+    ]
   },
+
   {
     timestamps: true
   }

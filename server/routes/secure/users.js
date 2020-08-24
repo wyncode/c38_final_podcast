@@ -13,11 +13,13 @@ router.patch('/api/users/me', async (req, res) => {
     'lastName',
     'email',
     'password',
-    'avatar'
+    'avatar',
+    'preferences'
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
+
   if (!isValidOperation)
     return res.status(400).send({ error: 'invalid updates!' });
   try {

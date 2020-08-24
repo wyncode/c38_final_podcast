@@ -1,6 +1,7 @@
 const router = require('express').Router(),
   { sendWelcomeEmail, forgotPasswordEmail } = require('../../emails/index'),
-  User = require('../../db/models/user.model');
+  User = require('../../db/models/user.model'),
+  axios = require('axios');
 
 // Create a user
 

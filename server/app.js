@@ -1,4 +1,4 @@
-require('./db/config');
+// require('./db/config');
 const express = require('express'),
   userRouter = require('./routes/secure/users'),
   passport = require('./middleware/authentication/'),

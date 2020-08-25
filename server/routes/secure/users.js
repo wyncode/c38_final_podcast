@@ -9,11 +9,12 @@ router.get('/api/users/me', async (req, res) => res.json(req.user));
 router.patch('/api/users/me', async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
-    'firstName',
-    'lastName',
+    'name',
     'email',
     'password',
-    'avatar'
+    'avatar',
+    'preference',
+    'favorites'
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)

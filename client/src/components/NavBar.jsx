@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
 function NavBar() {
   return (
     <Navbar>
@@ -12,7 +12,7 @@ function NavBar() {
 
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
-        <Button href="/Login">Log In</Button>
+        <Button href="/Login">Returning User: Log in</Button>
       </Navbar.Collapse>
     </Navbar>
   );

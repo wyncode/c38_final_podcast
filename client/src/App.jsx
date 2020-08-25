@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import './App.css';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
-import NavBar from './components/NavBar';
+import AboutYou from './pages/AboutYou';
 const App = () => {
   const [serverMessage, setServerMessage] = useState('');
 
@@ -20,12 +20,12 @@ const App = () => {
 
   return (
     <AppContextProvider>
-      <NavBar />
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/About-Yourself" component={AboutYou} />
         </Switch>
       </BrowserRouter>
     </AppContextProvider>

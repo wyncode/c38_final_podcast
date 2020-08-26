@@ -1,10 +1,11 @@
 require('./db/config');
+import { podcast } from "./routes/secure/router";
 const express = require('express'),
   userRouter = require('./routes/secure/users'),
   passport = require('./middleware/authentication/'),
   cookieParser = require('cookie-parser'),
   path = require('path'),
-  openRoutes = require('./routes/open');
+  openRoutes = require('./routes/open'),
 fileUpload = require('express-fileupload');
 
 const app = express();
@@ -22,11 +23,12 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.use(
-  passport.authenticate('jwt', {
-    session: false
-  })
-);
+// app.use(
+//   passport.authenticate('jwt', {
+//     session: true
+//   })
+// );npm start 
+
 
 app.use(
   fileUpload({
@@ -37,7 +39,7 @@ app.use(
 
 //  Authenticated  Routes
 app.use(userRouter);
-
+app.use(podcast);
 if (process.env.NODE_ENV === 'production') {
   // Handle React routing, return all requests to React app
   app.get('*', (request, response) => {

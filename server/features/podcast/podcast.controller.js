@@ -16,7 +16,6 @@ exports.getAllCategories = async ( req, res ) => {
 }
 
 exports.AddCategories = async ( req, res ) => {
-
     const { err, category } = await service.addCategories( req.body )
     if ( category ) {
         return res.status( 200 ).json( {
@@ -26,7 +25,7 @@ exports.AddCategories = async ( req, res ) => {
     }
     return res.status( 400 ).json( {
         success: false,
-        message: "Sorry, Something went wrong."
+        message: "Some Thing went wrong"
     } )
 }
 
@@ -41,7 +40,7 @@ exports.getAllPodCast = async ( req, res ) => {
     }
     return res.status( 400 ).json( {
         success: false,
-        message: "Sorry, Something went wrong."
+        message: "Some Thing went wrong"
     } )
 }
 

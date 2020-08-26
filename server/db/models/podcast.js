@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+const { ObjectId } = require( 'mongodb' );
 const Schema = mongoose.Schema;
 
 const podcastSchema = new Schema(
   {
     genre: {
-      type: String
+      type: ObjectId,
+      ref:"genre Id"
     },
     author: {
       type: String

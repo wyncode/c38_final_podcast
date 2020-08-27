@@ -1,18 +1,18 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import Logo from '../Photos/wyncastV2.png';
+import Avatar from '../Photos/wyncastv1.png';
 function NavBar() {
   return (
     <Navbar>
       <Nav.Item>
-        {/*save for later to add logo */}
-        {/* <img width="70px" src={Logo} /> */}
-        <Button href="/">Home</Button>
+        <Nav.Link href="/">
+          <img width="130px" height="60px" src={Logo} />
+        </Nav.Link>
       </Nav.Item>
-
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
-        <Button href="/Login">Log In</Button>
+        <img width="130px" height="60px" src={Avatar} />
       </Navbar.Collapse>
     </Navbar>
   );

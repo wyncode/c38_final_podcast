@@ -1,14 +1,24 @@
 import React from 'react';
-// import NavBar from '../components/NavBar';
-
+import { Container, Nav, Button } from 'react-bootstrap';
+import HomeNavBar from '../components/HomeNavBar';
+import Logo from '../Photos/wyncastV2.png';
+import Photo from '../Photos/HomePhoto.jpg';
 const Home = () => {
   return (
-    <div>
-      <h1 className="fullscreen d-flex flex-column align-items-center">
-        WYNCAST
-    
-      </h1>
-    </div>
+    <>
+      <HomeNavBar />
+      <Container>
+        <Nav.Item className="fullscreen d-flex flex-column align-items-center mb-2">
+          <img src={Logo} />
+        </Nav.Item>
+        <Nav.Item className="d-flex flex-column align-items-center ">
+          <img src={Photo} height="700px" />
+        </Nav.Item>
+        <Nav.Item className="fullscreen d-flex flex-column align-items-center mt-5">
+          <Button href="/signup">Find the next podcast</Button>
+        </Nav.Item>
+      </Container>
+    </>
   );
 };
 

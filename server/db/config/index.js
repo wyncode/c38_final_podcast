@@ -6,8 +6,8 @@ try {
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-  });
-  console.log('Connected to MongoDB');
+  }) .then( (res) => {console.log('Connected to MongoDB');});
+  
 } catch (e) {
-  console.log(e.toString());
+  console.log("consosoososo=====>",e.toString());
 }

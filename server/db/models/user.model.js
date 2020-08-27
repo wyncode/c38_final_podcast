@@ -5,16 +5,12 @@ const mongoose = require('mongoose'),
 
 const userSchema = new mongoose.Schema(
   {
-    firstName: {
+    name: {
       type: String,
       required: true,
       trim: true
     },
-    lastName: {
-      type: String,
-      required: true,
-      trim: true
-    },
+
     email: {
       type: String,
       unique: true,
@@ -55,8 +51,22 @@ const userSchema = new mongoose.Schema(
     ],
     avatar: {
       type: String
-    }
+    },
+
+    preferences: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Categories'
+      }
+    ],
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Podcast'
+      }
+    ]
   },
+
   {
     timestamps: true
   }

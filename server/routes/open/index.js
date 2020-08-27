@@ -5,15 +5,14 @@ const router = require('express').Router(),
 // Create a user
 
 router.post('/api/users/', async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
     const user = new User({
-      firstName,
-      lastName,
+      name,
       email,
       password
     });
-    sendWelcomeEmail(user.email, user.firstName);
+    sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,
@@ -53,7 +52,7 @@ router.get('/api/password', async (req, res) => {
     if (!user) throw new Error("account doesn't exist");
     // Build jwt token
     const token = jwt.sign(
-      { _id: user._id.toString(), name: user.firstName },
+      { _id: user._id.toString(), name: user.name },
       process.env.JWT_SECRET,
       {
         expiresIn: '10m'

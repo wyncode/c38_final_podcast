@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import Logo from '../Photos/wyncastV2.png';
 import Avatar from '../Photos/wyncastv1.png';
 function NavBar() {

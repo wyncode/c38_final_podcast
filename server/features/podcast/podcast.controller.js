@@ -90,3 +90,30 @@ exports.login = async ( req, res ) => {
     } );
 };
 
+exports.addPodCastToCategory = async ( req, res ) => {
+    const { categoryId } = req.body
+    let data = {
+        genre: ObjectId( categoryId ),
+        author: faker.name.findName(),
+        title: faker.lorem.slug(),
+        coverImage: faker.image.imageUrl(),
+        numOfEpisodes: faker.random.number(),
+        length: faker.random.number(),
+        likes: faker.random.number(),
+        description: faker.lorem.paragraph(),
+    }
+
+    const { err, newPodCast } = await service.addPodCastToCategory( data )
+    if ( newPodCast ) {
+        return res.json( {
+            success: true,
+            podcast: newPodCast,
+        } )
+    }
+    return res.json( {
+        success: false,
+        message: "Some Thing went wrong"
+    } )
+
+}
+

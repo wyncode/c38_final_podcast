@@ -5,7 +5,8 @@ const {
     AddCategories,
     getAllPodCast,
     getAllPodCastOfSingleCategory,
-    login
+    login,
+    addPodCastToCategory
 } = require("./podcast.controller") ;
 // router.route("/getAllCategories").get(getAllCategories)
 router.get("/getAllCategories", getAllCategories)
@@ -23,7 +24,7 @@ router.route("/getAllPodCastOfSingleCategory").post(getAllPodCastOfSingleCategor
 router.route( '/login' ).post( login )
 
 
-
+router.route('/addPodCastToCategory').post(addPodCastToCategory)
 
 
 module.exports = router;

@@ -26,3 +26,9 @@ exports.isUserPortalExists = async ( query ) => {
     const [err, user] = await to( User.find( query ) );
     return { err, user };
 }
+
+exports.addPodCastToCategory =async (body)=>{
+    const newPodcast = new Podcast( body )
+    const [err, newPodCast] = await to( newPodcast.save() )
+    return { err, newPodCast }
+}

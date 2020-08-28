@@ -6,7 +6,7 @@ import HomeNavBar from '../components/HomeNavBar';
 import Logo from '../Photos/wyncastV2.png';
 import Photo from '../Photos/HomePhoto.jpg';
 const Home = () => {
-  const { setIsLoginModalOpen, setSignUpModalOpen } = useContext(AppContext);
+  const { setSignUpModalOpen } = useContext(AppContext);
 
   return (
     <>

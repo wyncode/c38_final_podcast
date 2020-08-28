@@ -1,8 +1,27 @@
-import service from "./podcast.service";
-import { ObjectId } from "mongodb";
+const service = require("./podcast.service") ;
+const { ObjectId } = require( 'mongodb' );
 
 exports.getAllCategories = async ( req, res ) => {
     const { err, categories } = await service.getAllCategories( {} )
+    if ( categories ) {
+        return res.status( 200 ).json( {
+            success: true,
+            categories
+        } )
+    }
+    return res.status( 400 ).json( {
+        success: false,
+        message: "Some Thing went wrong"
+    } )
+}
+
+exports.getThreeCategories = async ( req, res ) => {
+    // const categories = req.body
+    const threeCategories = ['News', 'Arts', 'Sports']
+    const { err, categories } = await service.getThreeCategories( 
+        {
+            $or: [{ name: threeCategories[0] }, { name: threeCategories[1] }, { name: threeCategories[2] }]
+        } )
     if ( categories ) {
         return res.status( 200 ).json( {
             success: true,

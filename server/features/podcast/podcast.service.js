@@ -1,6 +1,6 @@
-import Genre from "../../db/models/genre.model";
-import to from "await-to-js";
-import Podcast from "../../db/models/podcast";
+const Genre = require("../../db/models/genre.model");
+const to = require("await-to-js");
+const Podcast = require( "../../db/models/podcast");
 
 
 exports.getAllCategories = async ( query ) => {

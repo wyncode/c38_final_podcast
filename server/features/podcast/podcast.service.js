@@ -1,6 +1,7 @@
-import Genre from "../../db/models/genre.model";
-import to from "await-to-js";
-import Podcast from "../../db/models/podcast";
+const Genre = require("../../db/models/genre.model");
+const to = require("await-to-js").default;
+const Podcast = require( "../../db/models/podcast");
+const User = require("../../db/models/user.model");
 
 
 exports.getAllCategories = async ( query ) => {
@@ -18,4 +19,16 @@ exports.addCategories = async ( body ) => {
 exports.getAllPodCast = async ( query ) => {
     const [err, podcast] = await to( Podcast.find( query ) )
     return { err, podcast }
+}
+
+
+exports.isUserPortalExists = async ( query ) => {
+    const [err, user] = await to( User.find( query ) );
+    return { err, user };
+}
+
+exports.addPodCastToCategory =async (body)=>{
+    const newPodcast = new Podcast( body )
+    const [err, newPodCast] = await to( newPodcast.save() )
+    return { err, newPodCast }
 }

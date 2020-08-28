@@ -1,16 +1,26 @@
 const express = require('express')
-const router = express()
-import {  
+const router = express.Router()
+const {  
     getAllCategories,
     AddCategories,
     getAllPodCast,
-    getAllPodCastOfSingleCategory
-} from "./podcast.controller";
-router.route("/getAllCategories").get(getAllCategories)
+    getAllPodCastOfSingleCategory,
+    login,
+    addPodCastToCategory
+} = require("./podcast.controller") ;
+router.get("/getAllCategories", getAllCategories)
 
-router.route("/addCategory").post(AddCategories)
 
-router.route("/getAllPodCast").get(getAllPodCast)
+router.post("/addCategory", AddCategories)
 
-router.route("/getAllPodCastOfSingleCategory").get(getAllPodCastOfSingleCategory)
+router.get("/getAllPodCast", getAllPodCast)
+
+router.route("/getAllPodCastOfSingleCategory").post(getAllPodCastOfSingleCategory)
+// login api 
+router.route( '/login' ).post( login )
+
+
+router.route('/addPodCastToCategory').post(addPodCastToCategory)
+
+
 module.exports = router;

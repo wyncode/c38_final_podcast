@@ -1,5 +1,5 @@
-import service from "./podcast.service";
-import { ObjectId } from "mongodb";
+const service = require("./podcast.service") ;
+const { ObjectId } = require( 'mongodb' );
 
 exports.getAllCategories = async ( req, res ) => {
     const { err, categories } = await service.getAllCategories( {} )
@@ -14,6 +14,8 @@ exports.getAllCategories = async ( req, res ) => {
         message: "Some Thing went wrong"
     } )
 }
+
+
 
 exports.AddCategories = async ( req, res ) => {
     const { err, category } = await service.addCategories( req.body )
@@ -47,8 +49,8 @@ exports.getAllPodCast = async ( req, res ) => {
 
 
 exports.getAllPodCastOfSingleCategory = async ( req, res ) => {
-    const { id } = req.query
-    const { err, podcast } = await service.getAllPodCast( { genre: ObjectId( id ) } )
+    const { ids } = req.body
+    const { err, podcast } = await service.getAllPodCast( { genre: ids.map( id => ObjectId( id ) ) } )
     if ( podcast ) {
         return res.status( 200 ).json( {
             success: true,
@@ -60,3 +62,58 @@ exports.getAllPodCastOfSingleCategory = async ( req, res ) => {
         message: "Some Thing went wrong"
     } )
 }
+
+exports.login = async ( req, res ) => {
+    const { email, password } = req.body;
+    const query = {
+        $and: [
+            {
+                email: email
+            },
+            {
+                password: password
+            }
+        ]
+    };
+    const { err, user } = await service.isUserPortalExists( query )
+    console.log(err,user)
+    if ( user && Array.isArray(user) && user.length) {
+        return res.status( 200 ).json( {
+            success: true,
+            user: user,
+        } );
+
+    }
+    return res.json( {
+        success: false,
+        message: " Incorrect crendentials"
+    } );
+};
+
+exports.addPodCastToCategory = async ( req, res ) => {
+    const { categoryId } = req.body
+    let data = {
+        genre: ObjectId( categoryId ),
+        author: faker.name.findName(),
+        title: faker.lorem.slug(),
+        coverImage: faker.image.imageUrl(),
+        numOfEpisodes: faker.random.number(),
+        length: faker.random.number(),
+        likes: faker.random.number(),
+        description: faker.lorem.paragraph(),
+    }
+
+    const { err, newPodCast } = await service.addPodCastToCategory( data )
+    if ( newPodCast ) {
+        return res.json( {
+            success: true,
+            podcast: newPodCast,
+        } )
+    }
+    return res.json( {
+        success: false,
+        message: "Some Thing went wrong"
+    } )
+
+}
+

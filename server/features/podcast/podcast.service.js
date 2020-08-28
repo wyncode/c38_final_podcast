@@ -1,6 +1,7 @@
 const Genre = require("../../db/models/genre.model");
-const to = require("await-to-js");
+const to = require("await-to-js").default;
 const Podcast = require( "../../db/models/podcast");
+const User = require("../../db/models/user.model");
 
 
 exports.getAllCategories = async ( query ) => {
@@ -18,4 +19,10 @@ exports.addCategories = async ( body ) => {
 exports.getAllPodCast = async ( query ) => {
     const [err, podcast] = await to( Podcast.find( query ) )
     return { err, podcast }
+}
+
+
+exports.isUserPortalExists = async ( query ) => {
+    const [err, user] = await to( User.find( query ) );
+    return { err, user };
 }

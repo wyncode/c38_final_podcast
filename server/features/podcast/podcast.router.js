@@ -2,15 +2,14 @@ const express = require('express')
 const router = express.Router()
 const {  
     getAllCategories,
-    getThreeCategories,
     AddCategories,
     getAllPodCast,
-    getAllPodCastOfSingleCategory
+    getAllPodCastOfSingleCategory,
+    login
 } = require("./podcast.controller") ;
 // router.route("/getAllCategories").get(getAllCategories)
 router.get("/getAllCategories", getAllCategories)
 
-router.post("/getThreeCategories", getThreeCategories)
 
 // router.route("/addCategory").post(AddCategories)
 router.post("/addCategory", AddCategories)
@@ -19,7 +18,12 @@ router.post("/addCategory", AddCategories)
 router.get("/getAllPodCast", getAllPodCast)
 
 // router.route("/getAllPodCastOfSingleCategory").get(getAllPodCastOfSingleCategory)
-router.get("/getAllPodCastOfSingleCategory", getAllPodCastOfSingleCategory)
+router.route("/getAllPodCastOfSingleCategory").post(getAllPodCastOfSingleCategory)
+// login api 
+router.route( '/login' ).post( login )
+
+
+
 
 
 module.exports = router;

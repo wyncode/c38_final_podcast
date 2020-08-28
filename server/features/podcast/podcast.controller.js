@@ -15,24 +15,7 @@ exports.getAllCategories = async ( req, res ) => {
     } )
 }
 
-exports.getThreeCategories = async ( req, res ) => {
-    // const categories = req.body
-    const threeCategories = ['News', 'Arts', 'Sports']
-    const { err, categories } = await service.getThreeCategories( 
-        {
-            $or: [{ name: threeCategories[0] }, { name: threeCategories[1] }, { name: threeCategories[2] }]
-        } )
-    if ( categories ) {
-        return res.status( 200 ).json( {
-            success: true,
-            categories
-        } )
-    }
-    return res.status( 400 ).json( {
-        success: false,
-        message: "Some Thing went wrong"
-    } )
-}
+
 
 exports.AddCategories = async ( req, res ) => {
     const { err, category } = await service.addCategories( req.body )
@@ -66,8 +49,8 @@ exports.getAllPodCast = async ( req, res ) => {
 
 
 exports.getAllPodCastOfSingleCategory = async ( req, res ) => {
-    const { id } = req.query
-    const { err, podcast } = await service.getAllPodCast( { genre: ObjectId( id ) } )
+    const { ids } = req.body
+    const { err, podcast } = await service.getAllPodCast( { genre: ids.map( id => ObjectId( id ) ) } )
     if ( podcast ) {
         return res.status( 200 ).json( {
             success: true,
@@ -79,3 +62,31 @@ exports.getAllPodCastOfSingleCategory = async ( req, res ) => {
         message: "Some Thing went wrong"
     } )
 }
+
+exports.login = async ( req, res ) => {
+    const { email, password } = req.body;
+    const query = {
+        $and: [
+            {
+                email: email
+            },
+            {
+                password: password
+            }
+        ]
+    };
+    const { err, user } = await service.isUserPortalExists( query )
+    console.log(err,user)
+    if ( user && Array.isArray(user) && user.length) {
+        return res.status( 200 ).json( {
+            success: true,
+            user: user,
+        } );
+
+    }
+    return res.json( {
+        success: false,
+        message: " Incorrect crendentials"
+    } );
+};
+

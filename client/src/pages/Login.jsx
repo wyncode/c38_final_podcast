@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-
+import { Container, Button } from 'react-bootstrap';
 const Login = () => {
   const { setIsLoginModalOpen, setSignUpModalOpen } = useContext(AppContext);
 

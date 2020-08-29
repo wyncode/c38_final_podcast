@@ -1,16 +1,18 @@
-import React from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
-import Logo from '../Photos/wyncastV2.png';
+import React, { useContext } from 'react';
+import { Navbar, Button } from 'react-bootstrap';
+import { AppContext } from '../context/AppContext';
 
 function HomeNavBar() {
+  const { setIsLoginModalOpen } = useContext(AppContext);
   return (
-    <>
-      <Navbar />
+    <Navbar>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
-        <Button href="/Login">Returning User: Log in</Button>
+        <Button onClick={() => setIsLoginModalOpen(true)}>
+          Returning User: Sign In
+        </Button>
       </Navbar.Collapse>
-    </>
+    </Navbar>
   );
 }
 

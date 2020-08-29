@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import './App.css';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
-// import NavBar from './components/NavBar';
+import AboutYou from './pages/AboutYou';
 import LoginModal from './components/LoginModal';
 import SignUpModal from './components/SignUpModal';
 

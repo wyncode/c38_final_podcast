@@ -1,13 +1,32 @@
 import React, { useState, useContext } from 'react';
 import { Modal, Form, Button, Nav } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
+import axios from 'axios';
 
-const SignUpModal = () => {
+const SignUpModal = ({ history }) => {
   const { signUpModalOpen, setSignUpModalOpen } = useContext(AppContext);
+  const [formData, setFormData] = useState(null);
+  const { setCurrentUser } = useContext(AppContext);
 
   const handleModal = (event) => {
     event.preventDefault();
     setSignUpModalOpen(!signUpModalOpen);
+  };
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/users', formData);
+      sessionStorage.setItem('user', response.data);
+      setCurrentUser(response.data.user);
+      history.push('/');
+    } catch (error) {
+      console.log('SignUp Error: ', error);
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Form, Row, Col } from 'react-bootstrap';
+import { Container, Button, Form } from 'react-bootstrap';
 import NavBar from '../components/NavBar';
 import '../App.css';
 const AboutYou = () => {

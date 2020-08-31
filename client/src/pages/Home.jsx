@@ -18,14 +18,10 @@ const Home = () => {
         <Nav.Item className="d-flex flex-column align-items-center ">
           <img src={Photo} height="700px" />
         </Nav.Item>
-        <Nav.Item className="fullscreen d-flex flex-column align-items-center mt-5">
-          <Button onClick={() => setSignUpModalOpen(true)} className="mb-5">
-            Find the next podcast
-          </Button>
-        </Nav.Item>
+
         {/* Three cards */}
         <div>
-          <Row>
+          <Row className="mt-3">
             <Card style={{ width: '18rem' }} className="mr-5 ml-5">
               <Card.Body>
                 <Card.Title>Step One</Card.Title>
@@ -63,6 +59,11 @@ const Home = () => {
             </Card>
           </Row>
         </div>
+        <Nav.Item className="fullscreen d-flex flex-column align-items-center mt-5">
+          <Button onClick={() => setSignUpModalOpen(true)} className="mb-5">
+            Find the next podcast
+          </Button>
+        </Nav.Item>
       </Container>
     </>
   );

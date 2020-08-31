@@ -33,7 +33,7 @@ exports.AddCategories = async ( req, res ) => {
 
 
 exports.getAllPodCast = async ( req, res ) => {
-    const { err, podcast } = await service.getAllPodCast( {} )
+    const { err, podcast } = await service.getAllPodCast( [{}] )
     if ( podcast ) {
         return res.status( 200 ).json( {
             success: true,
@@ -47,14 +47,50 @@ exports.getAllPodCast = async ( req, res ) => {
 }
 
 
-
 exports.getAllPodCastOfSingleCategory = async ( req, res ) => {
     const { ids } = req.body
-    const { err, podcast } = await service.getAllPodCast( { genre: ids.map( id => ObjectId( id ) ) } )
+    const { err, podcast } = await service.getAllPodCast( [
+        {
+            $match: {
+                genre: { $in: ids.map( id => ObjectId( id ) ) }
+            }
+        },
+        {
+            $lookup: {
+                from: "genres",
+                localField: "genre",
+                foreignField: "_id",
+                as: "category"
+            }
+        },
+        {
+            $unwind:{"path":"$category"}
+        },
+        {
+            $project:{
+                author:true,
+                title:true,
+                coverImage:true,
+                likes:true,
+                description:true,
+                category:"$category.name",
+                categoryId:"$category._id"
+            }
+        }
+
+    ] )
     if ( podcast ) {
+        let catOne = podcast.filter(rec=>String(rec.categoryId)===String(ids[0]))
+        let catTwo = podcast.filter(rec=>String(rec.categoryId)===String(ids[1]))
+        let catThree = podcast.filter(rec=>String(rec.categoryId)===String(ids[2]))
+        
         return res.status( 200 ).json( {
             success: true,
-            podcast
+            podcast:{
+                catOne,
+                catTwo,
+                catThree
+            }
         } )
     }
     return res.status( 400 ).json( {

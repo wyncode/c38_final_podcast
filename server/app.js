@@ -1,12 +1,12 @@
 require('./db/config');
-import { podcast } from "./routes/secure/router";
+const { podcast } = require('./routes/secure/router');
 const express = require('express'),
   userRouter = require('./routes/secure/users'),
   passport = require('./middleware/authentication/'),
   cookieParser = require('cookie-parser'),
   path = require('path'),
   openRoutes = require('./routes/open'),
-fileUpload = require('express-fileupload');
+  fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -27,8 +27,7 @@ if (process.env.NODE_ENV === 'production') {
 //   passport.authenticate('jwt', {
 //     session: true
 //   })
-// );npm start 
-
+// );npm start
 
 app.use(
   fileUpload({

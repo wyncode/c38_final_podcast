@@ -6,8 +6,11 @@ import './App.css';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import AboutYou from './pages/AboutYou';
+import Results from './pages/Results';
 import LoginModal from './components/LoginModal';
 import SignUpModal from './components/SignUpModal';
+import PrivateRoute from './components/PrivateRoute';
+import LibraryMain from './components/LibraryMain';
 
 const App = () => {
   return (
@@ -18,6 +21,8 @@ const App = () => {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/About-Yourself" component={AboutYou} />
+          <Route exact path="/Results" component={Results} />
+          <PrivateRoute exact path="/library-main" component={LibraryMain} />
         </Switch>
         <LoginModal />
         <SignUpModal />

@@ -1,5 +1,5 @@
 require('./db/config');
-const  podcast  = require("./routes/secure/router");
+const  {podcast}  = require("./routes/secure/router");
 var bodyParser = require('body-parser')
 var cors = require('cors')
 const express = require('express'),
@@ -8,7 +8,7 @@ const express = require('express'),
   cookieParser = require('cookie-parser'),
   path = require('path'),
   openRoutes = require('./routes/open'),
-fileUpload = require('express-fileupload');
+  fileUpload = require('express-fileupload');
 
 const app = express();
 

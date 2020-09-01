@@ -5,10 +5,10 @@ const router = require('express').Router(),
 // Create a user
 
 router.post('/api/users/', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
   try {
     const user = new User({
-      name,
+      username,
       email,
       password
     });
@@ -28,9 +28,9 @@ router.post('/api/users/', async (req, res) => {
 // Login a user
 
 router.post('/api/users/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const user = await User.findByCredentials(email, password);
+    const user = await User.findByCredentials(username, password);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,

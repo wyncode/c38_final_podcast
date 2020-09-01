@@ -5,7 +5,7 @@ const mongoose = require('mongoose'),
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: true,
       trim: true
@@ -93,8 +93,8 @@ userSchema.methods.generateAuthToken = async function () {
 };
 
 // find user by email and password
-userSchema.statics.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ email });
+userSchema.statics.findByCredentials = async (username, password) => {
+  const user = await User.findOne({ username });
   if (!user) throw new Error('Unable to log in.');
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw new Error('Unable to login.');

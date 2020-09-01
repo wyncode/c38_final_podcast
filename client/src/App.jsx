@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { AppContextProvider } from './context/AppContext';
 import ContextDemo from './components/ContextDemo';
 import { BrowserRouter, Switch, Route, useHistory, Redirect } from 'react-router-dom';
-import Home from './pages/Home';
+import LandingPage from './pages/LandingPage';
 import './App.css';
-import SignUp from './pages/SignUp';
+import LibraryMain from '.pages/LibraryMain';
 import Login from './pages/Login';
 import NavBar from './components/NavBar';
 import AboutYou from './pages/AboutYou';
@@ -12,6 +12,11 @@ import MyPodcast from './pages/MyPodcast';
 import { createBrowserHistory } from 'history';
 import Play from './pages/Play';
 // import PodCast from './pages/PodCast';
+import Results from './pages/Results';
+import LoginModal from './components/LoginModal';
+import SignUpModal from './components/SignUpModal';
+import PrivateRoute from './components/PrivateRoute';
+
 const App = () => {
   let hist = createBrowserHistory()
   let history = useHistory();
@@ -88,7 +93,6 @@ const App = () => {
     <AppContextProvider>
       <NavBar />
         <Switch>
-        <Route exact path="/" component={Home} />
           <Route exact path="/About-Yourself" render={( props ) => <AboutYou
             {...props}
             data={state.categories}
@@ -109,8 +113,11 @@ const App = () => {
           
           />} />
 
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/Login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/About-Yourself" component={AboutYou} />
+          <Route exact path="/Results" component={Results} />
+          <PrivateRoute exact path="/library-main" component={LibraryMain} />
         </Switch>
     </AppContextProvider>
   );

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Container, Nav, Button, Card, Row } from 'react-bootstrap';
-
 import { AppContext } from '../context/AppContext';
 import HomeNavBar from '../components/HomeNavBar';
 import Logo from '../Photos/wyncastV2.png';

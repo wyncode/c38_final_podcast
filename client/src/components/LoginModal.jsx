@@ -5,28 +5,10 @@ import axios from 'axios';
 
 const LoginModal = ({ history }) => {
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(AppContext);
-  const { setCurrentUser } = useContext(AppContext);
-  const [formData, setFormData] = useState(null);
 
   const handleModal = (event) => {
     event.preventDefault();
     setIsLoginModalOpen(!isLoginModalOpen);
-  };
-
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post('/api/users/login', formData);
-      setCurrentUser(response.data);
-      sessionStorage.setItem('user', response.data);
-      history.push('/');
-    } catch (error) {
-      console.log('Login Error: ', error);
-    }
   };
 
   return (

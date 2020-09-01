@@ -13,6 +13,16 @@ const SignUpModal = ({ history }) => {
 
   const handleModal = (event) => {
     event.preventDefault();
+    // try {
+    //   const response = await axios.post('/api/users/login', formData);
+    //   setCurrentUser(response.data);
+    //   // persists user if browser is refreshed.
+    //   sessionStorage.setItem('user', response.data);
+    //   history.push('/');
+    // } catch (error) {
+    //   console.log('Login Error: ', error);
+    // }
+
     setSignUpModalOpen(!signUpModalOpen);
   };
   const handleSignUp = async (e) => {

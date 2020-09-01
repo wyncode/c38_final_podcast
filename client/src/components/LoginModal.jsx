@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const LoginModal = () => {
   const history = useHistory();
+
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(AppContext);
   const { setCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
@@ -13,6 +14,7 @@ const LoginModal = () => {
   const handleModal = (event) => {
     event.preventDefault();
     setIsLoginModalOpen(true);
+
   };
 
   const handleChange = (event) => {

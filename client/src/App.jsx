@@ -1,9 +1,9 @@
 import React from 'react';
 import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import LandingPage from './pages/LandingPage';
 import './App.css';
-import SignUp from './pages/SignUp';
+import LibraryMain from '.pages/LibraryMain';
 import Login from './pages/Login';
 import AboutYou from './pages/AboutYou';
 import Results from './pages/Results';
@@ -17,9 +17,8 @@ const App = () => {
     <AppContextProvider>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/Login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/About-Yourself" component={AboutYou} />
           <Route exact path="/Results" component={Results} />
           <PrivateRoute exact path="/library-main" component={LibraryMain} />

@@ -9,7 +9,6 @@ export const AppContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const user = sessionStorage.getItem('user');
-
   useEffect(() => {
     // incase user refreshes and context is cleared.
     if (user && !currentUser) {
@@ -23,18 +22,17 @@ export const AppContextProvider = ({ children }) => {
         .catch((error) => console.error(error));
     }
   }, [currentUser, user]);
-
   return (
     <AppContext.Provider
       value={{
-        currentUser,
-        setCurrentUser,
-        loading,
-        setLoading,
         isLoginModalOpen,
         setIsLoginModalOpen,
         signUpModalOpen,
-        setSignUpModalOpen
+        setSignUpModalOpen,
+        currentUser,
+        setCurrentUser,
+        loading,
+        setLoading
       }}
     >
       {children}

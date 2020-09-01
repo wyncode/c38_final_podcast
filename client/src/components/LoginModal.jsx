@@ -1,14 +1,24 @@
 import React, { useState, useContext } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
+import axios from 'axios'
 
-const LoginModal = () => {
+const LoginModal = ({history}) => {
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(AppContext);
 
   const [formData, setFormData] = useState(null);
 
   const handleModal = (event) => {
     event.preventDefault();
+    try {
+      const response = await axios.post('/api/users/', formData);
+      setCurrentUser(response.data);
+      // persists user if browser is refreshes.
+      sessionStorage.setItem('user', response.data);
+      history.push('/');
+    } catch (error) {
+      console.log('Login Error: ', error);
+    }
     setIsLoginModalOpen(!isLoginModalOpen);
   };
 

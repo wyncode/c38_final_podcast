@@ -4,12 +4,14 @@ import { Container, Nav, Button, Card, Row } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import HomeNavBar from '../components/HomeNavBar';
 import Logo from '../Photos/wyncastV2.png';
-import Photo from '../Photos/HomePhoto.jpg';
-const Home = () => {
+import CardsNav from '../components/CardsNav';
+import Blog from '../Images/Blog2.jpg';
+
+const LandingPage = () => {
   const { setSignUpModalOpen } = useContext(AppContext);
 
   return (
-    <>
+    <div>
       <HomeNavBar />
       <Container>
         <Nav.Item className="fullscreen d-flex flex-column align-items-center mb-2">
@@ -64,8 +66,11 @@ const Home = () => {
           </Row>
         </div>
       </Container>
-    </>
+      <div>
+        <img className="mt-50" src={Blog} width="100%" height="650px" />
+      </div>
+    </div>
   );
 };
 
-export default Home;
+export default LandingPage;

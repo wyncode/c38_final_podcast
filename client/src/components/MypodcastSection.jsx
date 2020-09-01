@@ -28,7 +28,7 @@ const MypodcastSection = ( props ) => {
                         </Card.Body> }
             
             {data && data.map(rec=><Card key={rec._id} onClick={ ()=>onCardClick(rec._id) }>
-                <Card.Img variant="top" src={rec.coverImage} width="300px" height="300px" />
+                <Card.Img variant="top" src={rec.coverImage} width="200px" height="200px" />
             </Card>)}
             
         </CardDeck>

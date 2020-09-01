@@ -18,7 +18,7 @@ const LandingPage = () => {
           <img src={Logo} />
         </Nav.Item>
         <Nav.Item className="d-flex flex-column align-items-center ">
-          <img src={Photo} height="700px" />
+          {/* <img src={Photo} height="700px" /> */}
         </Nav.Item>
         <Nav.Item className="fullscreen d-flex flex-column align-items-center mt-5">
           <Button onClick={() => setSignUpModalOpen(true)} className="mb-5">

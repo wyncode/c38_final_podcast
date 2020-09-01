@@ -1,6 +1,9 @@
 import React from 'react';
 import { Row, Col, Button, FormControl } from 'react-bootstrap';
 import MypodcastSection from '../components/MypodcastSection';
+
+
+
 const MyPodcast = ( { data ,onCardClick } ) => {
     let { catOne, catTwo, catThree } = data
     console.log(data)
@@ -40,6 +43,24 @@ const MyPodcast = ( { data ,onCardClick } ) => {
                         data={catThree}
                         onCardClick={onCardClick}
                     />
+                </div>
+
+               <div 
+               
+               style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "center",
+                textAlign: "center"
+            }}
+               > <Button
+                    variant="outline-primary"
+                    style={{
+                        width: "30%",
+                        margin: "30px"
+                    }}
+                >Add to My Library </Button>
                 </div>
 
             </div>

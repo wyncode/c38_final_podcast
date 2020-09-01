@@ -4,14 +4,12 @@ import ContextDemo from './components/ContextDemo';
 import { BrowserRouter, Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import './App.css';
-import LibraryMain from '.pages/LibraryMain';
-import Login from './pages/Login';
+import LibraryMain from './pages/LibraryMain';
 import NavBar from './components/NavBar';
 import AboutYou from './pages/AboutYou';
 import MyPodcast from './pages/MyPodcast';
 import { createBrowserHistory } from 'history';
 import Play from './pages/Play';
-// import PodCast from './pages/PodCast';
 import Results from './pages/Results';
 import LoginModal from './components/LoginModal';
 import SignUpModal from './components/SignUpModal';
@@ -114,8 +112,7 @@ const App = () => {
           />} />
 
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/Login" component={Login} />
-          <Route exact path="/About-Yourself" component={AboutYou} />
+          <Route exact path="/About-Yourself" component={AboutYou} /> 
           <Route exact path="/Results" component={Results} />
           <PrivateRoute exact path="/library-main" component={LibraryMain} />
         </Switch>

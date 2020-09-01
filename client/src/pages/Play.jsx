@@ -67,8 +67,8 @@ const Play = ( props ) => {
                     }}
 
                 >
-                    <Card style={{ width: "40%", marginBottom: "30px" }}>
-                        <Card.Img variant="top" src={singlePodcast.coverImage} style={{ width: "100%", height: "200px" }} />
+                    <Card style={{ width: "20%", marginBottom: "30px" }}>
+                        <Card.Img variant="top" src={singlePodcast.coverImage} style={{ width: "200px", height: "200px" }} />
                         <Card.Body>
                             <Card.Title
                                 style={{
@@ -102,7 +102,7 @@ const Play = ( props ) => {
                 </div>
             </Container>
             <CardDeck>
-                {showMoreArray.map( rec => <Card key={rec._id} style={{ width: "40%" }}>
+                {showMoreArray.map( rec => <Card key={rec._id} style={{ width: "20%" }}>
                     <Card.Img variant="top" src={rec.coverImage} style={{ width: "100%", height: "200px" }} />
                     <Card.Body>
                         <Card.Title

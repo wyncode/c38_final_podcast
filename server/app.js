@@ -1,5 +1,5 @@
 require('./db/config');
-import { podcast } from "./routes/secure/router";
+const  podcast  = require("./routes/secure/router");
 var bodyParser = require('body-parser')
 var cors = require('cors')
 const express = require('express'),

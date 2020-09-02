@@ -1,12 +1,18 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Row, Col, Button, FormControl } from 'react-bootstrap';
 import MypodcastSection from '../components/MypodcastSection';
+import {AppContext} from '../context/AppContext';
 
 
 
-const MyPodcast = ( { data ,onCardClick } ) => {
+const MyPodcast = ( { data ,onCardClick, podcastSelection, history} ) => {
     let { catOne, catTwo, catThree } = data
-    console.log(data)
+     const {podcast,setPodcast} = useContext(AppContext)
+
+    const handlePodcast = ()=>{
+        setPodcast(podcastSelection)
+    }
+ 
     return (
         <div
         >
@@ -20,6 +26,7 @@ const MyPodcast = ( { data ,onCardClick } ) => {
                     <MypodcastSection
                         data={catOne}
                         onCardClick={onCardClick}
+                        
                     />
                 </div>
             {  catOne && catOne.length &&  <hr style={{
@@ -59,7 +66,10 @@ const MyPodcast = ( { data ,onCardClick } ) => {
                     style={{
                         width: "30%",
                         margin: "30px"
+                    
                     }}
+                    onClick={() => history.push('/library-main')}
+                    
                 >Add to My Library </Button>
                 </div>
 

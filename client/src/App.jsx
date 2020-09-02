@@ -84,12 +84,15 @@ const App = () => {
         showMoreArray:state.completeData.splice(0,3),
         singlePodcast:a
       })
-      history.push("/play")
+      console.log(state.singlePodcast)
+    
   }
 
   return (
     <AppContextProvider>
+      
       <NavBar />
+     
         <Switch>
           <Route exact path="/About-Yourself" render={( props ) => <AboutYou
             {...props}
@@ -101,6 +104,7 @@ const App = () => {
           <Route exact  path="/mypodcast" render={( props ) => <MyPodcast
           {...props} 
           data={state.podCast} 
+          podcastSelection={state.singlePodcast}
           onCardClick={onCardClick}
           // slectedCategories={slectedCategories}
           />} />
@@ -116,6 +120,9 @@ const App = () => {
           <Route exact path="/Results" component={Results} />
           <PrivateRoute exact path="/library-main" component={LibraryMain} />
         </Switch>
+        <LoginModal />
+        <SignUpModal />
+        
     </AppContextProvider>
   );
 

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {  Card, Button, CardDeck } from 'react-bootstrap'
+import {AppContext} from '../context/AppContext'
 
 
 
-const MypodcastSection = ( props ) => {
-    const {data,onCardClick} = props
+const MypodcastSection = ( {data, onCardClick} ) => {
+    const {podcast,setPodcast} = useContext(AppContext)
+    
+    console.log('PODCAST SELECTION: ', podcast)
     return (
         <CardDeck style={{
             width: "80%"
@@ -27,7 +30,12 @@ const MypodcastSection = ( props ) => {
                     </Card.Text>
                         </Card.Body> }
             
-            {data && data.map(rec=><Card key={rec._id} onClick={ ()=>onCardClick(rec._id) }>
+            {data && data.map(rec=><Card key={rec._id} onClick={ ()=>{
+               
+                onCardClick(rec._id)
+        
+                setPodcast({...podcast, [rec.title]: rec._id})
+                } }>
                 <Card.Img variant="top" src={rec.coverImage} width="200px" height="200px" />
             </Card>)}
             

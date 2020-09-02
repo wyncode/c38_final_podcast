@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useEffect, useContext} from 'react';
 import { Card, CardDeck, Container, Nav, Button } from 'react-bootstrap';
 import HomeNavBar from '../components/HomeNavBar';
 import Logo from '../Photos/wyncastV2.png';
 import CardsNav from '../components/CardsNav';
 import Blog from '../Images/Blog2.jpg';
+import {AppContext} from '../context/AppContext'
 
 const LibraryMain = () => {
+  const {podcast} = useContext(AppContext)
+  useEffect(() => {
+   const podcastsToFetch = Object.values(podcast)
+    console.log(podcastsToFetch)
+    // loop through each id in the podcastsToFetch array, and make a GET request for the details of each podcast using the id.
+  },[])
   const cards = [
     {
       header: 'Library',
@@ -24,6 +31,7 @@ const LibraryMain = () => {
         {cards.map((card) => {
           return (
             <CardsNav
+            key={card.header}
               header={card.header}
               title={card.title}
               body={card.body}

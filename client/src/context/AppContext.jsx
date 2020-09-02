@@ -4,6 +4,7 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
+  const [podcast,setPodcast]=useState({})
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -25,6 +26,8 @@ export const AppContextProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        podcast,
+        setPodcast,
         isLoginModalOpen,
         setIsLoginModalOpen,
         signUpModalOpen,

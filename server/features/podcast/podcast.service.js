@@ -15,9 +15,8 @@ exports.addCategories = async ( body ) => {
     return { err, category }
 }
 
-
 exports.getAllPodCast = async ( query ) => {
-    const [err, podcast] = await to( Podcast.find( query ) )
+    const [err, podcast] = await to( Podcast.aggregate( query ) )
     return { err, podcast }
 }
 

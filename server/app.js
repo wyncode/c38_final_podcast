@@ -1,5 +1,7 @@
 require('./db/config');
-const { podcast } = require('./routes/secure/router');
+const  {podcast}  = require("./routes/secure/router");
+var bodyParser = require('body-parser')
+var cors = require('cors')
 const express = require('express'),
   userRouter = require('./routes/secure/users'),
   passport = require('./middleware/authentication/'),
@@ -12,11 +14,14 @@ const app = express();
 
 //Middleware
 app.use(express.json());
-
+app.use(cors())
 //Unauthenticated routes
 app.use(openRoutes);
 app.use(cookieParser());
-
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 //
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
@@ -27,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 //   passport.authenticate('jwt', {
 //     session: true
 //   })
-// );npm start
+// );
 
 app.use(
   fileUpload({

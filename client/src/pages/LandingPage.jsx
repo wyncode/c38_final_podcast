@@ -17,7 +17,7 @@ const LandingPage = () => {
           <img src={Logo} />
         </Nav.Item>
         <Nav.Item className="d-flex flex-column align-items-center ">
-          <img src={Photo} height="700px" />
+          {/* <img src={Photo} height="700px" /> */}
         </Nav.Item>
 
         {/* Three cards */}

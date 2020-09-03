@@ -30,3 +30,7 @@ Button {
   display: flex;
   justify-content: center;
 }
+
+.fullscreen {
+  height: 100vh;
+}

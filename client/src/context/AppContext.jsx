@@ -4,11 +4,13 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const [podcast,setPodcast]=useState({})
+  const [podcast, setPodcast] = useState({});
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
   const user = sessionStorage.getItem('user');
   useEffect(() => {
     // incase user refreshes and context is cleared.
@@ -26,6 +28,10 @@ export const AppContextProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        preview,
+        setPreview,
+        image,
+        setImage,
         podcast,
         setPodcast,
         isLoginModalOpen,

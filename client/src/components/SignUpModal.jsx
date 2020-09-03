@@ -47,7 +47,7 @@ const SignUpModal = ({ history }) => {
       backdrop="static"
     >
       <Form
-        className="container d-flex flex-column align-items-center justify-content-center fullscreen"
+        className="container d-flex flex-column align-items-center justify-content-center"
         onSubmit={handleSignUp}
       >
         <Form.Text>Sign Up | WynCast</Form.Text>

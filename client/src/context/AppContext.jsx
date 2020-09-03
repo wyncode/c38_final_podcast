@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [preview, setPreview] = useState(null);
   const user = sessionStorage.getItem('user');
   useEffect(() => {
+    console.log('fetching');
     // incase user refreshes and context is cleared.
     if (user && !currentUser) {
       axios

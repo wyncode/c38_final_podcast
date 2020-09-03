@@ -1,7 +1,7 @@
 require('./db/config');
-const  {podcast}  = require("./routes/secure/router");
-var bodyParser = require('body-parser')
-var cors = require('cors')
+const podcast = require('./routes/secure/router');
+var bodyParser = require('body-parser');
+var cors = require('cors');
 const express = require('express'),
   userRouter = require('./routes/secure/users'),
   passport = require('./middleware/authentication/'),
@@ -14,25 +14,18 @@ const app = express();
 
 //Middleware
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 //Unauthenticated routes
 app.use(openRoutes);
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }))
- 
+//app.use(bodyParser.urlencoded({ extended: false }));
+
 // parse application/json
-app.use(bodyParser.json())
-//
+//app.use(bodyParser.json());//
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
-
-// app.use(
-//   passport.authenticate('jwt', {
-//     session: true
-//   })
-// );
 
 app.use(
   fileUpload({
@@ -40,6 +33,11 @@ app.use(
     tempFileDir: '/tmp/images'
   })
 );
+// app.use(
+//   passport.authenticate('jwt', {
+//     session: false
+//   })
+// );
 
 //  Authenticated  Routes
 app.use(userRouter);

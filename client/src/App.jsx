@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { AppContextProvider } from './context/AppContext';
 import ContextDemo from './components/ContextDemo';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  useHistory,
+  Redirect
+} from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import './App.css';
 import LibraryMain from './pages/LibraryMain';
@@ -14,7 +20,10 @@ import Results from './pages/Results';
 import LoginModal from './components/LoginModal';
 import SignUpModal from './components/SignUpModal';
 import PrivateRoute from './components/PrivateRoute';
+import Recommendations from './pages/Recommendations';
+import Footer from './components/Footer';
 import Profile from './pages/Profile';
+
 
 const App = () => {
   let hist = createBrowserHistory();
@@ -29,7 +38,8 @@ const App = () => {
     showMoreArray: []
   });
   const fetchCategories = () => {
-    fetch(`http://localhost:8080/api/getAllCategories`)
+    fetch(`/api/getAllCategories`)
+
       .then((response) => response.json())
       .then((response) => {
         console.log('Response====>', response);
@@ -49,7 +59,7 @@ const App = () => {
     });
   };
   const fetchPodcasts = () => {
-    fetch(`http://localhost:8080/api/getAllPodCastOfSingleCategory`, {
+    fetch(/api/getAllPodCastOfSingleCategory`, {
       // Adding method type
       method: 'POST',
       // Adding body or contents to send
@@ -134,11 +144,13 @@ const App = () => {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/About-Yourself" component={AboutYou} />
         <Route exact path="/Results" component={Results} />
-        <Route exact path="/profile" component={Profile} />
         <PrivateRoute exact path="/library-main" component={LibraryMain} />
+        <Route exact path="/recommendations" component={Recommendations} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
       <LoginModal />
       <SignUpModal />
+      <Footer />
     </AppContextProvider>
   );
 };

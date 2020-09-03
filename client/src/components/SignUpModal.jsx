@@ -2,15 +2,16 @@ import React, { useState, useContext } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-const SignUpModal = ({ history }) => {
+const SignUpModal = () => {
   const { signUpModalOpen, setSignUpModalOpen } = useContext(AppContext);
   const { setCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState(null);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const history = useHistory();
   const handleModal = (event) => {
     event.preventDefault();
     // try {
@@ -31,7 +32,8 @@ const SignUpModal = ({ history }) => {
       const response = await axios.post('/api/users', formData);
       sessionStorage.setItem('user', response.data);
       setCurrentUser(response.data.user);
-      history.push('/');
+      setSignUpModalOpen(!signUpModalOpen);
+      history.push('/About-Yourself');
     } catch (error) {
       console.log('SignUp Error: ', error);
     }
@@ -84,7 +86,7 @@ const SignUpModal = ({ history }) => {
           className="mb-4 mt-2"
           type="submit"
           onSubmit={handleModal}
-          href="/About-Yourself"
+          // href="/About-Yourself"
         >
           Let's Get Started!
         </Button>

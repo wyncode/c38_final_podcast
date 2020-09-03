@@ -4,13 +4,14 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const [podcast,setPodcast]=useState({})
+  const [podcast, setPodcast] = useState({});
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const user = sessionStorage.getItem('user');
   useEffect(() => {
+    console.log('fetching');
     // incase user refreshes and context is cleared.
     if (user && !currentUser) {
       axios

@@ -36,7 +36,7 @@ const App = () => {
     showMoreArray: []
   });
   const fetchCategories = () => {
-    fetch(`http://localhost:8080/api/getAllCategories`)
+    fetch(`/api/getAllCategories`)
       .then((response) => response.json())
       .then((response) => {
         console.log('Response====>', response);
@@ -56,7 +56,7 @@ const App = () => {
     });
   };
   const fetchPodcasts = () => {
-    fetch(`http://localhost:8080/api/getAllPodCastOfSingleCategory`, {
+    fetch(/api/getAllPodCastOfSingleCategory`, {
       // Adding method type
       method: 'POST',
       // Adding body or contents to send

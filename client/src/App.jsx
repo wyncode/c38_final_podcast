@@ -22,6 +22,8 @@ import SignUpModal from './components/SignUpModal';
 import PrivateRoute from './components/PrivateRoute';
 import Recommendations from './pages/Recommendations';
 import Footer from './components/Footer';
+import Profile from './pages/Profile';
+
 
 const App = () => {
   let hist = createBrowserHistory();
@@ -37,6 +39,7 @@ const App = () => {
   });
   const fetchCategories = () => {
     fetch(`/api/getAllCategories`)
+
       .then((response) => response.json())
       .then((response) => {
         console.log('Response====>', response);
@@ -143,6 +146,7 @@ const App = () => {
         <Route exact path="/Results" component={Results} />
         <PrivateRoute exact path="/library-main" component={LibraryMain} />
         <Route exact path="/recommendations" component={Recommendations} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
       <LoginModal />
       <SignUpModal />

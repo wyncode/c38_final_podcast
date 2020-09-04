@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Navbar, Nav, NavDropdown, Button, Image, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import photo from '../Photos/wyncastv1.png';
+import { AppContext } from '../context/AppContext';
 function NavBar() {
+  const { image, currentUser } = useContext(AppContext);
+  console.log(image ? image : currentUser?.avatar ? currentUser.avatar : photo);
   return (
     <>
-    <Navbar style={{color:"white",background:"white"}}>
-      <Navbar.Brand href="#home"><Image src="logo.png"  /></Navbar.Brand>
+      <Navbar style={{ color: 'white', background: 'white' }}>
+        <Navbar.Brand href="/">
+          <Image src="logo.png" />
+        </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/About-Yourself">Library</Nav.Link>
-          <Nav.Link href="/mypodcast">My podcast</Nav.Link>
-          <Nav.Link href="/About-Yourself">About US</Nav.Link> 
+          <Nav.Link href="/About-Yourself">My Library</Nav.Link>
+          <Nav.Link href="/">Recommendation</Nav.Link>
+          <Nav.Link href="/">Top Ten</Nav.Link>
+          <Nav.Link href="/About-Us">About US</Nav.Link>
         </Nav>
-        <Navbar.Collapse className="justify-content-end"><Image src="avatar.png" /></Navbar.Collapse>
-     
-    </Navbar>
-     
-  </>
+        <Navbar.Brand className="justify-content-end" href="/profile">
+          <Image
+            src={
+              image
+                ? URL.createObjectURL(image)
+                : currentUser?.avatar
+                ? currentUser.avatar
+                : photo
+            }
+            alt="profile-picture"
+            width={150}
+            height={150}
+            roundedCircle
+          />
+        </Navbar.Brand>
+      </Navbar>
+    </>
   );
 }
 

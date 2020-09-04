@@ -31,12 +31,14 @@ exports.getAllCategories = async (req, res) => {
 };
 
 exports.getPodcastById = async (req, res) => {
+  console.log('hit');
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(400).send('Not a valid podcast id');
   try {
-    const podcast = await Podcast.findOne({ _id, owner: req.user._id });
+    const podcast = await Podcast.findOne({ _id });
     if (!podcast) return res.sendStatus(404);
+    console.log(podcast);
     res.json(podcast);
   } catch (e) {
     res.status(500).json({ error: e.toString() });

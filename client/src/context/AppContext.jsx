@@ -11,6 +11,7 @@ export const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [selectedPodcasts, setSelectedPodcasts] = useState([]);
   const user = sessionStorage.getItem('user');
   useEffect(() => {
     console.log('fetching');
@@ -42,7 +43,9 @@ export const AppContextProvider = ({ children }) => {
         currentUser,
         setCurrentUser,
         loading,
-        setLoading
+        setLoading,
+        selectedPodcasts,
+        setSelectedPodcasts
       }}
     >
       {children}

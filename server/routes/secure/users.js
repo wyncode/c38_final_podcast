@@ -5,9 +5,18 @@ const router = require('express').Router(),
 // Get current user
 router.get('/api/users/me', async (req, res) => res.json(req.user));
 
+router.post('/api/podcast/favorite', async (req, res) => {
+  try {
+    console.log(req.body);
+  } catch (e) {
+    console.log(err.message);
+  }
+});
+
 // Update a user
 router.patch('/api/users/me', async (req, res) => {
   const updates = Object.keys(req.body);
+  console.log(updates);
   const allowedUpdates = [
     'name',
     'email',

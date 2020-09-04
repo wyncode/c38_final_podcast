@@ -27,7 +27,6 @@ Button {
 
 .singleCard:hover {
   transform: scale(1.2);
-
   padding: 20px;
 }
 
@@ -37,7 +36,8 @@ Button {
   bottom: 0;
   width: 100%;
   padding: 10px;
-  position: bottom;
+  position: fixed;
+  bottom: 0;
   margin-top: 100px;
 }
 .footer-left {
@@ -50,13 +50,12 @@ Button {
 
 .footer-right {
   width: 17%;
-  margin-left: 60%;
+  margin-left: 75%;
 }
 
 .mission-head {
   color: #ffd399;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
-  font-size: 90%;
-
+  font-size: 150%;
 }

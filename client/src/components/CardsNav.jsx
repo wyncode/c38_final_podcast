@@ -7,16 +7,16 @@ import Cover from '../Images/podcastcover.jpg';
 const CardsNav = ({ header, title, body }) => {
   return (
     //<CardDeck>
-    <Card>
-      {/* <Card.Header>{header}</Card.Header> */}
+    <Card className="singleCard">
+      <Card.Header>PODCAST</Card.Header>
       <Card.Img variant="top" src={Cover} width={300} />
-      {/* <Card.Body>
+      <Card.Body>
         <Card.Title>{title}</Card.Title>
-        <Card.Text>{body}</Card.Text>
-      </Card.Body> */}
-      {/* <Card.Footer>
+        {/* <Card.Text>{body}</Card.Text> */}
+      </Card.Body>
+      <Card.Footer>
         <small className="text-muted"></small>
-      </Card.Footer> */}
+      </Card.Footer>
     </Card>
     //</CardDeck>
   );

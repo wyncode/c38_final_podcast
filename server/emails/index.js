@@ -4,13 +4,16 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 sgMail.setApiKey(SENDGRID_API_KEY);
 
 const sendWelcomeEmail = (email, userName) => {
-  sgMail.send({
-    to: email,
-    from: `${process.env.FROM_EMAIL}`,
-    subject: 'Hooray from Wyncast.',
-    text: `Hi ${userName}! Welcome Wyncast, are you ready to listen?.`
-    // html: exampleHTMLEmail
-  });
+  try {
+    sgMail.send({
+      to: email,
+      from: `${process.env.FROM_EMAIL}`,
+      subject: 'Hooray from Wyncast.',
+      text: `Hi ${userName}! Welcome Wyncast, are you ready to listen?.`
+    });
+  } catch (error) {
+    console.log('error', error.toString);
+  }
 };
 
 const sendCancellationEmail = (email, userName) => {

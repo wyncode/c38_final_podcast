@@ -12,9 +12,9 @@ function NavBar() {
           <Image src="logo.png" />
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/About-Yourself">My Library</Nav.Link>
-          <Nav.Link href="/">Recommendation</Nav.Link>
-          <Nav.Link href="/">Top Ten</Nav.Link>
+          <Nav.Link href="/library-main">My Library</Nav.Link>
+          <Nav.Link href="/recommendations">Recommendations</Nav.Link>
+          <Nav.Link href="/top10">Top Ten</Nav.Link>
           <Nav.Link href="/About-Us">About US</Nav.Link>
         </Nav>
         <Navbar.Brand className="justify-content-end" href="/profile">

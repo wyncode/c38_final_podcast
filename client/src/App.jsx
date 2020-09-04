@@ -10,7 +10,6 @@ import {
 } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import './App.css';
-import LibraryMain from './pages/LibraryMain';
 import NavBar from './components/NavBar';
 import AboutYou from './pages/AboutYou';
 import MyPodcast from './pages/MyPodcast';
@@ -23,7 +22,8 @@ import PrivateRoute from './components/PrivateRoute';
 import Recommendations from './pages/Recommendations';
 import Footer from './components/Footer';
 import Profile from './pages/Profile';
-
+import Top10 from './pages/Top10';
+import LibraryMain from './components/LibraryMain';
 
 const App = () => {
   let hist = createBrowserHistory();
@@ -39,7 +39,6 @@ const App = () => {
   });
   const fetchCategories = () => {
     fetch(`/api/getAllCategories`)
-
       .then((response) => response.json())
       .then((response) => {
         console.log('Response====>', response);
@@ -59,7 +58,7 @@ const App = () => {
     });
   };
   const fetchPodcasts = () => {
-    fetch(/api/getAllPodCastOfSingleCategory`, {
+    fetch(`/api/getAllPodCastOfSingleCategory`, {
       // Adding method type
       method: 'POST',
       // Adding body or contents to send
@@ -142,10 +141,11 @@ const App = () => {
           )}
         />
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/About-Yourself" component={AboutYou} />
-        <Route exact path="/Results" component={Results} />
+        <Route exact path="/about-yourself" component={AboutYou} />
+        <Route exact path="/results" component={Results} />
         <PrivateRoute exact path="/library-main" component={LibraryMain} />
         <Route exact path="/recommendations" component={Recommendations} />
+        <Route exact path="/top10" component={Top10} />
         <Route exact path="/profile" component={Profile} />
       </Switch>
       <LoginModal />

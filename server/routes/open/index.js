@@ -12,7 +12,7 @@ router.post('/api/users/', async (req, res) => {
       email,
       password
     });
-    sendWelcomeEmail(user.email, user.name);
+    // sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, {
       httpOnly: true,

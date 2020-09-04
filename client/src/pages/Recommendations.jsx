@@ -10,11 +10,9 @@ function Recommendations() {
         <h3>Other titles you might enjoy...</h3>
       </Row>
       <Container className="cardContainer">
-        <CardsNav className="singleCard">
-          <Button>See All</Button>
-        </CardsNav>
-        <CardsNav />
-        <CardsNav />
+        <CardsNav className="singleCard" />
+        <CardsNav className="singleCard" />
+        <CardsNav className="singleCard" />
 
         {/* <Row className="m-5">
           <h3>Other titles you might enjoy...</h3>

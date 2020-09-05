@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Container, Image, Button } from 'react-bootstrap';
 import photo from '../Photos/wyncastv1.png';
 import { AppContext } from '../context/AppContext';
+import NavBar from '../components/NavBar';
 import axios from 'axios';
 const Profile = () => {
   const {
@@ -39,8 +40,10 @@ const Profile = () => {
       console.log(error);
     }
   };
+  console.log(currentUser);
   return (
     <>
+      <NavBar />
       <Container className="d-flex justify-content-center align-items-center flex-column">
         <h1 className="mt-4">Your Profile</h1>
         <div className="mt-4">
@@ -65,6 +68,14 @@ const Profile = () => {
               Save Image
             </Button>
           </form>
+        </div>
+        <div className="d-flex flex-column align-items-center justify-content-center mt-4">
+          <div className="d-flex ">
+            <label htmlFor="name" className="pr-4 font-weight-bold">
+              Name:
+            </label>
+            <p>{currentUser?.name} : User</p>
+          </div>
         </div>
       </Container>
     </>

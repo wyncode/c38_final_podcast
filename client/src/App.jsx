@@ -19,10 +19,8 @@ import Results from './pages/Results';
 import LoginModal from './components/LoginModal';
 import SignUpModal from './components/SignUpModal';
 import PrivateRoute from './components/PrivateRoute';
-import Recommendations from './pages/Recommendations';
 import Footer from './components/Footer';
 import Profile from './pages/Profile';
-import Top10 from './pages/Top10';
 import LibraryMain from './components/LibraryMain';
 
 const App = () => {
@@ -144,8 +142,6 @@ const App = () => {
         <Route exact path="/about-yourself" component={AboutYou} />
         <Route exact path="/results" component={Results} />
         <PrivateRoute exact path="/library-main" component={LibraryMain} />
-        <Route exact path="/recommendations" component={Recommendations} />
-        <Route exact path="/top10" component={Top10} />
         <Route exact path="/profile" component={Profile} />
       </Switch>
       <LoginModal />

@@ -7,7 +7,7 @@ function NavBar() {
   console.log(image ? image : currentUser?.avatar ? currentUser.avatar : photo);
   return (
     <>
-      <Navbar style={{ color: 'white', background: 'white' }}>
+      <Navbar style={{ color: 'white', background: '#A1C3D1' }}>
         <Navbar.Brand href="/">
           <Image src="logo.png" />
         </Navbar.Brand>

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Navbar, Nav, NavDropdown, Button, Image, Row } from 'react-bootstrap';
 import photo from '../Photos/wyncastv1.png';
+import logo from '../Images/Logo.png';
 import { AppContext } from '../context/AppContext';
 function NavBar() {
   const { image, currentUser } = useContext(AppContext);
@@ -9,7 +10,7 @@ function NavBar() {
     <>
       <Navbar style={{ color: 'white', background: 'white' }}>
         <Navbar.Brand href="/">
-          <Image src="logo.png" />
+          <Image src={logo} />
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/library-main">My Library</Nav.Link>

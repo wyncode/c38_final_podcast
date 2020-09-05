@@ -14,7 +14,6 @@ const LoginModal = () => {
   const handleModal = (event) => {
     event.preventDefault();
     setIsLoginModalOpen(true);
-
   };
 
   const handleChange = (event) => {
@@ -26,7 +25,7 @@ const LoginModal = () => {
       const response = await axios.post('/api/users/login', formData);
       setCurrentUser(response.data);
       // persists user if browser is refreshes.
-      sessionStorage.setItem('user', response.data);
+      sessionStorage.setItem('user', JSON.stringify(response.data));
       setIsLoginModalOpen(false);
       history.push('/library-main');
     } catch (error) {

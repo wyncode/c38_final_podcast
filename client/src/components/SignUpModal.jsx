@@ -30,7 +30,8 @@ const SignUpModal = () => {
     e.preventDefault();
     try {
       const response = await axios.post('/api/users', formData);
-      sessionStorage.setItem('user', response.data);
+      sessionStorage.setItem('user', JSON.stringify(response.data));
+      console.log(response.data)
       setCurrentUser(response.data.user);
       setSignUpModalOpen(!signUpModalOpen);
       history.push('/About-Yourself');

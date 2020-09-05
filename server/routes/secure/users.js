@@ -1,15 +1,67 @@
 const router = require('express').Router(),
   { sendCancellationEmail } = require('../../emails/index'),
   cloudinary = require('cloudinary').v2;
+const User = require('../../db/models/user.model');
+const Genre = require('../../db/models/genre.model');
+const Podcast = require('../../db/models/podcast');
+const mongoose = require('mongoose');
 
 // Get current user
 router.get('/api/users/me', async (req, res) => res.json(req.user));
 
-router.post('/api/podcast/favorite', async (req, res) => {
+router.post('/api/podcast/favorite/:id', async (req, res) => {
+  let userData = req.body;
+  let preferences = [];
+  let favorites = [];
+  userData.map((item) => {
+    preferences.push(item.genre);
+    favorites.push(item._id);
+  });
+
+  const userId = req.params.id;
+
+  User.findByIdAndUpdate(
+    userId,
+    { preferences: preferences, favorites: favorites },
+    function (err, docs) {
+      if (err) {
+        return res.json({ error: 'something went wrong' });
+      } else {
+        return res.json({ message: 'updated successfully' });
+      }
+    }
+  );
+});
+
+router.get('/api/user/:id', async (req, res) => {
+  const _id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(400).send('Not a valid user id');
   try {
-    console.log(req.body);
+    let obj = {};
+    const user = await User.findOne({ _id });
+    if (!user) return res.sendStatus(404);
+    const genreArray = await user.preferences;
+    const genre = await Promise.all(
+      genreArray.map(async (item) => {
+        const results = await Genre.find().where('_id').in(item).exec();
+        return results;
+      })
+    );
+    const favoritesArray = await user.favorites;
+    const favorite = await Promise.all(
+      favoritesArray.map(async (item) => {
+        const results = await Podcast.find().where('_id').in(item).exec();
+        return results;
+      })
+    );
+    const favoriteFinal = favorite.flat();
+    const genreFinal = genre.flat();
+    obj.favorite = favoriteFinal;
+    obj.genre = genreFinal;
+    return res.json(obj);
   } catch (e) {
-    console.log(err.message);
+    res.status(500).json({ error: e.message });
   }
 });
 

@@ -38,7 +38,6 @@ exports.getPodcastById = async (req, res) => {
   try {
     const podcast = await Podcast.findOne({ _id });
     if (!podcast) return res.sendStatus(404);
-    console.log(podcast);
     res.json(podcast);
   } catch (e) {
     res.status(500).json({ error: e.toString() });

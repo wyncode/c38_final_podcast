@@ -3,12 +3,23 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
 function LibraryMain(props) {
-  const { podcast, setPodcast, selectedPodcast } = useContext(AppContext);
+  const { podcast, setPodcast, selectedPodcast, currentUser } = useContext(
+    AppContext
+  );
   const [library, setLibrary] = useState([]);
-  const [data, setData] = useState({});
 
   const podcastsToFetch = Object.values(podcast);
-  console.log(library);
+
+  // this is for a user who already has favs and preferences (a logged in user basically)
+  const fetchUser = () => {
+    const user = sessionStorage.getItem('user');
+    const userDetails = JSON.parse(user);
+    const userId = userDetails._id;
+    axios.get(`api/user/${userId}`, { withCredentials: true }).then((res) => {
+      console.log(res.data);
+    });
+  };
+
   useEffect(() => {
     const array = [];
     podcastsToFetch.forEach((id) => {
@@ -19,12 +30,19 @@ function LibraryMain(props) {
     setLibrary(array);
   }, []);
 
+  // This is for a user who has just signed up
   const handlePost = () => {
-    library.forEach((item) => setData(item));
+    const user = sessionStorage.getItem('user');
+    const userDetails = JSON.parse(user);
+    const userId = userDetails._id;
+
     axios
-      .post('/api/podcast/favorite', data, { withCredentials: true })
+      .post(`/api/podcast/favorite/${userId}`, library, {
+        withCredentials: true
+      })
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.message);
+        fetchUser(userId);
       });
   };
 

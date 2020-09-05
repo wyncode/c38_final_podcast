@@ -9,10 +9,12 @@ import {
   FormControl
 } from 'react-bootstrap';
 import '../App.css';
+import NavBar from '../components/NavBar';
 const Play = (props) => {
   const { showMoreArray, singlePodcast } = props;
   return (
     <>
+      <NavBar />
       <Container className="d-flex flex-column justify-content-center">
         <div
           style={{

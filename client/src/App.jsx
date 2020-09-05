@@ -90,6 +90,7 @@ const App = () => {
 		<AppContextProvider>
 			<NavBar />
 
+<<<<<<< HEAD
 			<Switch>
 				<Route
 					exact
@@ -137,6 +138,62 @@ const App = () => {
 			<Footer />
 		</AppContextProvider>
 	);
+=======
+  return (
+    <AppContextProvider>
+      <Switch>
+        <Route
+          exact
+          path="/About-Yourself"
+          render={(props) => (
+            <AboutYou
+              {...props}
+              data={state.categories}
+              onclick={selectCategory}
+              slectedCategories={state.slectedCategories}
+              onDone={fetchPodcasts}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/mypodcast"
+          render={(props) => (
+            <MyPodcast
+              {...props}
+              data={state.podCast}
+              podcastSelection={state.singlePodcast}
+              onCardClick={onCardClick}
+              // slectedCategories={slectedCategories}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/play"
+          render={(props) => (
+            <Play
+              {...props}
+              singlePodcast={state.singlePodcast}
+              showMoreArray={state.showMoreArray}
+            />
+          )}
+        />
+        <Route exact path="/" component={LandingPage} />
+
+        <Route exact path="/about-yourself" component={AboutYou} />
+        <Route exact path="/results" component={Results} />
+        <PrivateRoute exact path="/library-main" component={LibraryMain} />
+        <Route exact path="/recommendations" component={Recommendations} />
+        <Route exact path="/top10" component={Top10} />
+        <Route exact path="/profile" component={Profile} />
+      </Switch>
+      <LoginModal />
+      <SignUpModal />
+      <Footer />
+    </AppContextProvider>
+  );
+>>>>>>> 5dfb5f737978c81f0c2d2f809ca396ebb985efca
 };
 
 export default App;

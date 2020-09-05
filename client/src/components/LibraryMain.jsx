@@ -6,9 +6,7 @@ function LibraryMain(props) {
   const { podcast, setPodcast, selectedPodcast, currentUser } = useContext(
     AppContext
   );
-  const [library, setLibrary] = useState([]);
-
-  const podcastsToFetch = Object.values(podcast);
+  const [userData, setUserData] = useState(null);
 
   // this is for a user who already has favs and preferences (a logged in user basically)
   const fetchUser = () => {
@@ -16,41 +14,24 @@ function LibraryMain(props) {
     const userDetails = JSON.parse(user);
     const userId = userDetails._id;
     axios.get(`api/user/${userId}`, { withCredentials: true }).then((res) => {
-      console.log(res.data);
+      setUserData(res.data);
     });
   };
 
   useEffect(() => {
-    const array = [];
-    podcastsToFetch.forEach((id) => {
-      axios.get(`/api/podcast/${id}`, { withCredentials: true }).then((res) => {
-        array.push(res.data);
-      });
-    });
-    setLibrary(array);
+    fetchUser();
   }, []);
 
   // This is for a user who has just signed up
-  const handlePost = () => {
-    const user = sessionStorage.getItem('user');
-    const userDetails = JSON.parse(user);
-    const userId = userDetails._id;
 
-    axios
-      .post(`/api/podcast/favorite/${userId}`, library, {
-        withCredentials: true
-      })
-      .then((res) => {
-        console.log(res.data.message);
-        fetchUser(userId);
-      });
-  };
+  userData && userData.favorite.map((item) => console.log(item));
 
   return (
-    <div>
+    <>
       <NavBar />
-      <button onClick={handlePost}>TEST</button>
-    </div>
+      {userData &&
+        userData.favorite.map((item) => <p key={item._id}>{item.title}</p>)}
+    </>
   );
 }
 

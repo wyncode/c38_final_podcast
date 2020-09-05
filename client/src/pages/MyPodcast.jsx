@@ -1,14 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import MypodcastSection from '../components/MypodcastSection';
 import { AppContext } from '../context/AppContext';
+import axios from 'axios';
 import NavBar from '../components/NavBar';
 const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
   let { catOne, catTwo, catThree } = data;
   const { podcast, setPodcast } = useContext(AppContext);
+  const [library, setLibrary] = useState([]);
 
-  const handlePodcast = () => {
-    setPodcast(podcastSelection);
+  const podcastsToFetch = Object.values(podcast);
+
+  useEffect(() => {
+    const array = [];
+    podcastsToFetch.forEach((id) => {
+      axios.get(`/api/podcast/${id}`, { withCredentials: true }).then((res) => {
+        array.push(res.data);
+      });
+    });
+    setLibrary(array);
+  }, [podcast]);
+
+  const handlePost = () => {
+    const user = sessionStorage.getItem('user');
+    const userDetails = JSON.parse(user);
+    const userId = userDetails._id;
+
+    axios
+      .post(`/api/podcast/favorite/${userId}`, library, {
+        withCredentials: true
+      })
+      .then((res) => {
+        console.log(res.data.message);
+        history.push('/library-main');
+      });
   };
 
   return (
@@ -62,7 +87,7 @@ const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
               width: '30%',
               margin: '30px'
             }}
-            onClick={() => history.push('/library-main')}
+            onClick={handlePost}
           >
             Add to My Library{' '}
           </Button>

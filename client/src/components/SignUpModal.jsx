@@ -31,7 +31,7 @@ const SignUpModal = () => {
     try {
       const response = await axios.post('/api/users', formData);
       sessionStorage.setItem('user', JSON.stringify(response.data));
-      console.log(response.data)
+      console.log(response.data);
       setCurrentUser(response.data.user);
       setSignUpModalOpen(!signUpModalOpen);
       history.push('/About-Yourself');
@@ -77,7 +77,7 @@ const SignUpModal = () => {
         <Form.Group>
           <Form.Label>Password</Form.Label>
           <Form.Control
-            typep="password"
+            type="password"
             placeholder="Password"
             name="password"
             onChange={handleChange}

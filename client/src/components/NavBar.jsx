@@ -13,9 +13,6 @@ function NavBar() {
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/library-main">My Library</Nav.Link>
-          <Nav.Link href="/recommendations">Recommendations</Nav.Link>
-          <Nav.Link href="/top10">Top Ten</Nav.Link>
-          <Nav.Link href="/About-Us">About US</Nav.Link>
         </Nav>
         <Navbar.Brand className="justify-content-end" href="/profile">
           <Image

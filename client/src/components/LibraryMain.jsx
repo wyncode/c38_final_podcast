@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-
+import NavBar from '../components/NavBar';
 function LibraryMain(props) {
   const { podcast, setPodcast, selectedPodcast, currentUser } = useContext(
     AppContext
@@ -28,6 +28,7 @@ function LibraryMain(props) {
 
   return (
     <>
+      <NavBar />
       {userData &&
         userData.favorite.map((item) => <p key={item._id}>{item.title}</p>)}
     </>

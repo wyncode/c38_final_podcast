@@ -3,16 +3,16 @@ import { Container, Nav, Button, Card, Row } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import HomeNavBar from '../components/HomeNavBar';
 import Logo from '../Photos/wyncastV2.png';
-import Blog from '../Images/Blog2.jpg';
+import Blog from '../Photos/Headphones.jpg';
 const LandingPage = () => {
   const { setSignUpModalOpen } = useContext(AppContext);
 
   return (
-    <div>
+    <>
       <HomeNavBar />
       <Container>
         <Nav.Item className="d-flex flex-column align-items-center mb-2">
-          <img src={Logo} />
+          <img className="mt-50" src={Blog} width="100%" height="650px" />
         </Nav.Item>
 
         {/* Three cards */}
@@ -29,7 +29,6 @@ const LandingPage = () => {
                 </Card.Text>
               </Card.Body>
             </Card>
-
             <Card style={{ width: '18rem' }} className="mr-5 ml-5">
               <Card.Body>
                 <Card.Title>Step Two</Card.Title>
@@ -61,10 +60,7 @@ const LandingPage = () => {
           Find the next podcast
         </Button>
       </Nav.Item>
-      <div>
-        <img className="mt-50" src={Blog} width="100%" height="650px" />
-      </div>
-    </div>
+    </>
   );
 };
 

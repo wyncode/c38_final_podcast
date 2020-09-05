@@ -100,8 +100,6 @@ const App = () => {
 
   return (
     <AppContextProvider>
-      <NavBar />
-
       <Switch>
         <Route
           exact
@@ -141,6 +139,7 @@ const App = () => {
           )}
         />
         <Route exact path="/" component={LandingPage} />
+
         <Route exact path="/about-yourself" component={AboutYou} />
         <Route exact path="/results" component={Results} />
         <PrivateRoute exact path="/library-main" component={LibraryMain} />

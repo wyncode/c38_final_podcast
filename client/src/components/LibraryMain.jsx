@@ -7,7 +7,6 @@ function LibraryMain(props) {
     AppContext
   );
   const [library, setLibrary] = useState([]);
-  const [userInfo, setUserInfo] = useState(null);
 
   const podcastsToFetch = Object.values(podcast);
 

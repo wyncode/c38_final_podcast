@@ -42,5 +42,4 @@ function Top10() {
     </>
   );
 }
-
 export default Top10;

@@ -20,6 +20,7 @@ function HomeNavBar() {
 			</Navbar.Collapse>
 		</Navbar>
 	);
+
 }
 
 export default HomeNavBar;

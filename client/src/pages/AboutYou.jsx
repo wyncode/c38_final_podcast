@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Form, Row } from 'react-bootstrap';
+import { Container, Button, Row } from 'react-bootstrap';
 import NavBar from '../components/NavBar';
 import '../App.css';
 const AboutYou = ({ data, onclick, slectedCategories, onDone }) => {
@@ -8,14 +8,6 @@ const AboutYou = ({ data, onclick, slectedCategories, onDone }) => {
     <>
       <NavBar />
       <Container className="d-flex flex-column justify-content-center">
-        {/* <Form>
-          <Form.Label>Tell us about yourself...</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="By selecting up to 3 favorite categories we can begin to curate your experience"
-          />
-        </Form> */}
-        {/* <h3 style={{fontFamily:'Century Gothic'}}>All About You</h3> */}
         <text style={{fontFamily:'Century Gothic', fontSize:'25px', color:'grey'}} className='d-flex justify-content-center' >Select up to 3 categories so we can begin to curate your rad experience:</text>
         <Row>
           {slectedCategories.map((rec) => (

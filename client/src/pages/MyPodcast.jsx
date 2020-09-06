@@ -39,7 +39,6 @@ const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
 			});
 	};
 
-<<<<<<< HEAD
 	return (
 		<div className="mypodcastbackground">
 			<div
@@ -75,42 +74,6 @@ const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
 				<div>
 					<MypodcastSection data={catThree} onCardClick={onCardClick} />
 				</div>
-=======
-  return (
-    <div>
-      <NavBar />
-      <div
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <div>
-          <MypodcastSection data={catOne} onCardClick={onCardClick} />
-        </div>
-        {catOne && catOne.length && (
-          <hr
-            style={{
-              border: '2px solid grey',
-              width: '90%'
-            }}
-          />
-        )}
-        <div>
-          <MypodcastSection data={catTwo} onCardClick={onCardClick} />
-        </div>
-        {catTwo && catTwo.length && (
-          <hr
-            style={{
-              border: '2px solid grey',
-              width: '90%'
-            }}
-          />
-        )}
-        <div>
-          <MypodcastSection data={catThree} onCardClick={onCardClick} />
-        </div>
->>>>>>> 5dfb5f737978c81f0c2d2f809ca396ebb985efca
 
 				<div
 					style={{

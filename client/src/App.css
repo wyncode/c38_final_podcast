@@ -1,61 +1,113 @@
 .gridArea {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 2px;
-  margin: 50px;
+	display: grid;
+	grid-template-columns: auto auto auto;
+	padding: 2px;
+	margin: 50px;
 }
 .grid-item {
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
+	padding: 20px;
+	font-size: 30px;
+	text-align: center;
 }
 Button {
-  width: 200px;
-  text-align: center;
+	width: 200px;
+	text-align: center;
 }
 
 .finalButton {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .cardContainer {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  justify-items: center;
+
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	justify-items: center;
 }
 
 .singleCard:hover {
-  transform: scale(0.99);
-  padding: 20px;
-}
+	transform: scale(1.2);
+	padding: 20px;
 
+}
+/* footer */
 .main-footer {
-  display: flex;
-  background-color: #e64398;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  margin-top: 100px;
+	display: flex;
+	background-color: #f7f7f7;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	margin-top: 100px;
+	border-top: 1px solid #a1c3d1;
 }
 .footer-left {
-  margin-left: 5%;
-  color: #f0ebf4;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  font-size: 90%;
+	margin-left: 5%;
+	color: #3491b9;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	font-size: 90%;
+
 }
 
 .footer-right {
-  width: 17%;
-  margin-left: 75%;
+	width: 17%;
+	margin-left: 75%;
 }
 
 .mission-head {
-  color: #f0ebf4;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 800;
-  font-size: 150%;
+	color: #3491b9;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	font-size: 150%;
+}
+/* wyncast logo  */
+
+/* landingpage */
+
+.row {
+	margin-top: 10px;
+}
+
+.btn {
+	color: #72b6d3;
+	font-weight: 500;
+	border-color: #3491b9;
+	border-width: 2px;
+	padding: 7px;
+}
+.btn:hover {
+	border-color: #f7f7f7;
+	background-color: #72b6d3;
+	border-width: 1.6px;
+}
+/* .mb-5.btn.btn-primary {
+	color: #72b6d3;
+	font-weight: 500;
+	border-color: #3491b9;
+	border-width: 2px;
+	padding: 7px; */
+/* } */
+.btn-primary {
+	color: #f7f7f7;
+	background-color: #f172a1;
+	border-color: f7f7f7;
+}
+
+/*nav menu 
+*/
+.navbar {
+	border-bottom: 2px solid #3491b9;
+	margin-bottom: 2rem;
+}
+a.nav-link {
+	color: #f7f7f7;
+}
+
+/* About You page - button Take Me To my Podcasts */
+.finalButton {
+	margin-bottom: 15rem;
+
 }

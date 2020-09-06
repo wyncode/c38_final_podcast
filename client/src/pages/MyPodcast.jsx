@@ -78,7 +78,9 @@ const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
+              marginTop: '30px',
+              marginBottom: '60px',
             }}
           >
             {' '}
@@ -86,15 +88,19 @@ const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
               variant="outline-primary"
               style={{
                 width: '30%',
-                margin: '30px',
-                color: '#A1C3D1',
+              
+                color: '#3491b9',
                 backgroundColor: '#F7F7F7',
-                marginBottom: '30px'
+                marginTop: '30px',
+                marginBottom: '30px',
               }}
               onClick={handlePost}
             >
               Add to My Library{' '}
             </Button>
+            <div style={{marginBlock: '10px'}}>
+
+            </div>
           </div>
         </div>
       </div>

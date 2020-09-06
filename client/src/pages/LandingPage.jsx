@@ -71,6 +71,7 @@ const LandingPage = () => {
               width: '270px',
               height: '43px',
               paddingBlock: '15px',
+              marginBottom: '3rem',
 						}}>
           Find your next podcast!
         </Button>

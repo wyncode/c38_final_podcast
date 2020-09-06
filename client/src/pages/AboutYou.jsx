@@ -16,7 +16,7 @@ const AboutYou = ({ data, onclick, slectedCategories, onDone }) => {
           />
         </Form> */}
         {/* <h3 style={{fontFamily:'Century Gothic'}}>All About You</h3> */}
-        <text style={{fontFamily:'Century Gothic', fontSize:'25px', color:'grey'}} className='d-flex justify-content-center' >Rad -- Select up to 3 categories so we can begin to curate your experience</text>
+        <text style={{fontFamily:'Century Gothic', fontSize:'25px', color:'grey'}} className='d-flex justify-content-center' >Select up to 3 categories so we can begin to curate your rad experience:</text>
         <Row>
           {slectedCategories.map((rec) => (
             <Button style={{ margin: '5px', borderColor: '#3491b9', borderWidth: '2px'}} key={rec.id}>

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import MypodcastSection from '../components/MypodcastSection';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-
+import NavBar from '../components/NavBar';
 const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
   let { catOne, catTwo, catThree } = data;
   const { podcast, setPodcast } = useContext(AppContext);
@@ -38,6 +38,7 @@ const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
 
   return (
     <div>
+      <NavBar />
       <div
         style={{
           justifyContent: 'center',

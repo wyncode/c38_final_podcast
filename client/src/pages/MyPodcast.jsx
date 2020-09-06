@@ -88,7 +88,8 @@ const MyPodcast = ({ data, onCardClick, podcastSelection, history }) => {
                 width: '30%',
                 margin: '30px',
                 color: '#A1C3D1',
-                backgroundColor: '#F7F7F7'
+                backgroundColor: '#F7F7F7',
+                marginBottom: '30px'
               }}
               onClick={handlePost}
             >

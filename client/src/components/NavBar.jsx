@@ -15,8 +15,11 @@ function NavBar() {
           <Image src={wyncastlogo} 	style={{width: '150px', height: '60px'}} />
 
         </Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="/library-main" style={{ color:'#f7f7f7', fontSize:'18px', justifyContent:'center'}}> My Library</Nav.Link>
+        <Nav className="mr-auto" style={{ color:'#f7f7f7', fontSize:'18px', justifyContent:'center'}}>
+          <Nav.Link href="/library-main" > My Library</Nav.Link>
+        <Nav.Link>Recommended</Nav.Link>
+        <Nav.Link>About Us</Nav.Link>
+        <Nav.Link>Contact</Nav.Link>
         </Nav>
         <Navbar.Brand className="justify-content-end" href="/profile">
           <Image
@@ -28,8 +31,8 @@ function NavBar() {
                 : photo
             }
             alt="profile-picture"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
             roundedCircle
           />
         </Navbar.Brand>

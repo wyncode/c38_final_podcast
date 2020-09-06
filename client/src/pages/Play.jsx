@@ -155,7 +155,7 @@ const Play = (props) => {
 
 
 
-      <CardDeck  style={{marginLeft:'30%', width: '40%'}}>
+      <CardDeck  style={{marginLeft:'30%', width: '40%', marginBottom:'10rem'}}>
         <Card>
             <Card.Img variant="top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sports-wars-1564771929.jpg" />
         </Card>

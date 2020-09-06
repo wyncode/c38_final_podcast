@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import NavBar from '../components/NavBar';
+import { Card, Container } from 'react-bootstrap';
+
+
 function LibraryMain(props) {
-  const { podcast, setPodcast, selectedPodcast, currentUser } = useContext(
-    AppContext
-  );
-  const [userData, setUserData] = useState(null);
+  const {} = useContext(AppContext);
+  const [userData, setUserData] = useState();
 
   // this is for a user who already has favs and preferences (a logged in user basically)
   const fetchUser = () => {
@@ -20,6 +20,7 @@ function LibraryMain(props) {
 
   useEffect(() => {
     fetchUser();
+    console.log(userData);
   }, []);
 
   // This is for a user who has just signed up
@@ -28,9 +29,25 @@ function LibraryMain(props) {
 
   return (
     <>
-      <NavBar />
-      {userData &&
-        userData.favorite.map((item) => <p key={item._id}>{item.title}</p>)}
+      <Container>
+        <div className="cardContainer">
+          {userData &&
+            userData.favorite.map((item) => (
+              <div key={item._id}>
+                <Card className="singleCard">
+                  <Card.Header>{item.author}</Card.Header>
+                  <Card.Img
+                    variant="top"
+                    src={item.coverImage}
+                    height="180px"
+                    width="180px"
+                  />
+                  <Card.Footer>{item.title}</Card.Footer>
+                </Card>
+              </div>
+            ))}
+        </div>
+      </Container>
     </>
   );
 }

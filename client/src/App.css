@@ -21,18 +21,18 @@ Button {
 
 .cardContainer {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto;
   justify-items: center;
 }
 
 .singleCard:hover {
-  transform: scale(1.2);
+  transform: scale(0.99);
   padding: 20px;
 }
 
 .main-footer {
   display: flex;
-  background-color: #f58f00;
+  background-color: #e64398;
   bottom: 0;
   width: 100%;
   padding: 10px;
@@ -42,7 +42,7 @@ Button {
 }
 .footer-left {
   margin-left: 5%;
-  color: #ffd399;
+  color: #f0ebf4;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 90%;
@@ -54,7 +54,7 @@ Button {
 }
 
 .mission-head {
-  color: #ffd399;
+  color: #f0ebf4;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   font-size: 150%;

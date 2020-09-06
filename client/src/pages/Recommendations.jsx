@@ -23,17 +23,14 @@ function Recommendations() {
             <Card.Img variant="top" src="holder.js/100px180" />
             <Button variant="warning">Add to Library</Button>
           </Card>
-
           <Card className="singleCard">
             <Card.Img variant="top" src="holder.js/100px180" />
             <Button variant="warning">Add to Library</Button>
           </Card>
-
           <Card className="singleCard">
             <Card.Img variant="top" src="holder.js/100px180" />
             <Button variant="warning">Add to Library</Button>
           </Card>
-
           <Card className="singleCard">
             <Card.Img variant="top" src="holder.js/100px180" />
             <Button variant="warning">Add to Library</Button>
@@ -42,5 +39,4 @@ function Recommendations() {
     </>
   );
 }
-
 export default Recommendations;

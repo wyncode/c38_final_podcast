@@ -17,7 +17,7 @@ const LandingPage = () => {
 
         {/* Three cards */}
         <div>
-        
+        <h3 style={{fontFamily:'Century Gothic', color:'#81868f'}}>How It Works: </h3>
           <Row >
           
             <Card 

@@ -100,7 +100,7 @@ const Play = (props) => {
                   textAlign: 'center'
                 }}
               >
-                {singlePodcast.title}
+                {singlePodcast?.title}
               </Card.Title>
             </Card.Body>
             <Card.Footer>

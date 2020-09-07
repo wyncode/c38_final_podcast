@@ -10,8 +10,16 @@
 
 ## Run Through
 
+- Creating a new User login passes through an open route, requires a unique email address, and prompts a web token to be issued
 
+![Alt text](https://github.com/wyncode/c38_final_podcast/blob/master/client/src/Photos/Logindemo.png)
+<br>
+- Selecting preferences, which include genres and individual podcasts, the data is saved by POST method to the User Model
 
+![Alt text](https://github.com/wyncode/c38_final_podcast/blob/master/client/src/Photos/Selectdemo.png)
+<br>
+- From the customized Library, a User can select individual Podcasts to listen to on the Play page
+![Alt text](https://github.com/wyncode/c38_final_podcast/blob/master/client/src/Photos/Librarydemo.png)
 
 
 ## API Endpoints
